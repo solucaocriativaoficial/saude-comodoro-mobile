@@ -7,15 +7,31 @@ import Header from '../../components/header'
 
 function Phone({navigation}){
     const [phones, setPhones] = useState([])
+    const [empty, setEmpty] = useState('')
     useEffect(() => {
         async function getContent(){
             const responsePhones = await api.get('./phone')
             const {status, data} = responsePhones
             if(status === 200 && data.success === true)
             setPhones(data.content)
+
+            if(!data.success)
+            setEmpty(data.message)
         }
         getContent()
     }, [])
+    if(empty !== '')
+    return(
+        <>
+        <Header navigation={navigation} title="Dicas de Saúde"/>
+        <View style={Style.container}>
+            <View style={Style.box_empty}>
+                <Text style={Style.empty}>{empty}</Text>
+            </View>
+        </View>
+        </>
+    )
+
     return(
         <>
         <Header navigation={navigation} title="Contatos de Telefones"/>

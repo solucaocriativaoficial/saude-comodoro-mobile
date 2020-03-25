@@ -6,6 +6,16 @@ const style = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 10,
     },
+    box_empty:{
+        height: 100,
+        alignItems: "center",
+        justifyContent: 'center'
+    },
+    empty: {
+        color: StylePattern.colors.black_light,
+        fontSize: 14,
+        fontWeight: "bold"
+    },
     post: {
         flex: 1,
         height: 100,
@@ -18,12 +28,12 @@ const style = StyleSheet.create({
         color: StylePattern.colors.primary,
         fontWeight:'bold',
         marginBottom: 10,
-        fontSize: 18,
+        fontSize: 16,
     },
     post_content: {
         color: StylePattern.colors.secundary,
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
     }
 })
 
