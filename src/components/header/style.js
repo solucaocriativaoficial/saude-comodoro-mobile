@@ -6,12 +6,12 @@ const Style = StyleSheet.create({
         height: 240,
     },
     btnMenu: {
-        margin: 10,
+        margin: 20,
         flex: 1,
     },
     imgMenu: {
-        width: 40,
-        height: 30,
+        width: 35,
+        height: 25,
     },
     boxTitle:{
         flex: 7,
