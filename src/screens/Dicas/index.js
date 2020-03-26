@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {View, Text, FlatList, TouchableOpacity} from 'react-native'
 import Style from './style'
 import api from '../../api'
 
@@ -12,7 +12,6 @@ function Dicas({navigation}){
         async function getContent(){
             const responseDicas = await api.get('./dicas')
             const {status, data} = responseDicas
-            console.log(data)
             if(status === 200 && data.success === true)
             setDicas(data.content)
 
@@ -41,10 +40,19 @@ function Dicas({navigation}){
             <FlatList
                 data={dicas}
                 renderItem={
-                    ({item}) => <View style={Style.post}>
-                        <Text style={Style.post_title}>{item.name}</Text>
-                        <Text style={Style.post_content}>{item.article}</Text>
-                    </View>}
+                    ({item}) => 
+                    <TouchableOpacity onPress={() => {
+                        navigation.push("DicasDetail", {
+                            id: item._id
+                        })
+                    }}>
+                        <View style={Style.post}>
+                            <Text style={Style.post_title}>{item.name}</Text>
+                            <Text style={Style.post_content}>{item.article}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    }
+                    keyExtractor={item => item._id}
             />
         </View>
         </>
