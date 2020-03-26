@@ -4,8 +4,8 @@ import Style from './style'
 import api from '../../api'
 
 function DicasDetail({route, navigation}){
-    const [dicasDetail, setDicasDetail] = useState([])
-    const [empty, setEmpty] = useState('')
+    const [dicasDetail, setDicasDetail] = useState('')
+    const [empty, setEmpty] = useState('Carregando')
     useEffect(() => {
         async function getContent(){
             const responseDicas = await api.get(`/dicas/1/${route.params.id}`)
@@ -18,7 +18,7 @@ function DicasDetail({route, navigation}){
         }
         getContent()
     }, [])
-    if(empty !== '')
+    if(dicasDetail === '')
     return(
         <>
         <View style={Style.container}>
