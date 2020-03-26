@@ -18,11 +18,15 @@ const style = StyleSheet.create({
     },
     post: {
         flex: 1,
+        flexDirection: 'row',
         height: 100,
         marginVertical: 10,
         borderBottomWidth: 1,
         borderColor: StylePattern.colors.black_more_light,
         justifyContent: 'center'
+    },
+    content:{
+        flex: 6,
     },
     post_title:{
         color: StylePattern.colors.primary,
@@ -34,6 +38,21 @@ const style = StyleSheet.create({
         color: StylePattern.colors.secundary,
         fontWeight: 'bold',
         fontSize: 16,
+    },
+    boxControlIconPhone:{
+        flex: 4,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    btnIcon:{
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+    },
+    iconActions:{
+        width: 28,
+        height: 28,
+        marginTop: 15,
     }
 })
 
