@@ -8,12 +8,14 @@ import {createStackNavigator} from '@react-navigation/stack'
 import Cases from '../screens/Cases'
 import Decress from '../screens/Decress'
 import Dicas from '../screens/Dicas'
+import DicasDetail from '../screens/DicasDetail'
 import Phone from '../screens/Phone'
 import Postos from '../screens/Postos'
 import Developer from '../screens/Developer'
 
 //assets
 import logo_developer from '../assets/icon-developer.png'
+import logo from '../assets/logo-saude.png'
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -29,20 +31,20 @@ function customMenu(props){
         >
             <View style={{
                 flex:0.4,
+                width: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderBottomWidth: 5,
-                borderColor: StylePattern.colors.primary,
                 height: 100,
                 marginBottom: 30,
             }}>
-                <Text style={{
-                    color: StylePattern.colors.primary,
-                    fontWeight: 'bold',
-                    fontSize: 23,
-                }}>Saúde de Comodoro</Text>
+                <Image source={logo} style={{
+                    width: 135,
+                    height: 115,
+                }}/>
             </View>
-            <DrawerItemList {...props}/>
+            <DrawerItemList {...props} labelStyle={{
+                fontWeight: "700",
+            }}/>
             <View style={{
                 flex:1,
                 justifyContent: 'flex-end',
@@ -102,6 +104,7 @@ function RouterScreens(){
                 <Stack.Screen name="Cases" component={Cases}/>
                 <Stack.Screen name="Decress" component={Decress}/>
                 <Stack.Screen name="Dicas" component={Dicas}/>
+                <Stack.Screen name="DicasDetail" component={DicasDetail}/>
                 <Stack.Screen name="Postos" component={Postos}/>
                 <Stack.Screen name="Developer" component={Developer}/>
             </Stack.Navigator>
