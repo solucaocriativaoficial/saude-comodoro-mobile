@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, TouchableOpacity} from 'react-native'
+import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import Style from './style'
 import api from '../../api'
 
 function DicasDetail({route, navigation}){
     const [dicasDetail, setDicasDetail] = useState('')
-    const [empty, setEmpty] = useState('Carregando')
+    const [empty, setEmpty] = useState('')
     useEffect(() => {
         async function getContent(){
             const responseDicas = await api.get(`/dicas/1/${route.params.id}`)
@@ -23,7 +23,12 @@ function DicasDetail({route, navigation}){
         <>
         <View style={Style.container}>
             <View style={Style.box_empty}>
-                <Text style={Style.empty}>{empty}</Text>
+                {
+                    empty === '' ?
+                    <ActivityIndicator size="large"/>
+                    :
+                    <Text style={Style.empty}>{empty}</Text>
+                }
             </View>
         </View>
         </>

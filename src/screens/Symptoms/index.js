@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {View, Text, FlatList, ActivityIndicator} from 'react-native'
 import Style from './style'
 import api from '../../api'
 
@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 export default function Symptoms({navigation}){
     const [symptoms, setSymptoms] = useState([])
-    const [empty, setEmpty] = useState('Carregando')
+    const [empty, setEmpty] = useState('')
     useEffect(() => {
         async function getContent(){
             const responseRequest = await api.get('./symptoms')
@@ -26,7 +26,12 @@ export default function Symptoms({navigation}){
         <Header navigation={navigation} title="Sintomas"/>
         <View style={Style.container}>
             <View style={Style.box_empty}>
-                <Text style={Style.empty}>{empty}</Text>
+                {
+                    empty === '' ?
+                    <ActivityIndicator size="large"/>
+                    :
+                    <Text style={Style.empty}>{empty}</Text>
+                }
             </View>
         </View>
         </>

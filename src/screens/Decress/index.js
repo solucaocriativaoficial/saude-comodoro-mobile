@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, FlatList, TouchableOpacity, Linking} from 'react-native'
+import {View, Text, FlatList, TouchableOpacity, Linking, ActivityIndicator} from 'react-native'
 import Style from './style'
 import api from '../../api'
 
@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 function Decress({navigation}){
     const [decress, setDecress] = useState([])
-    const [empty, setEmpty] = useState('Carregando')
+    const [empty, setEmpty] = useState('')
     useEffect(() => {
         async function getContent(){
             const responseDecress = await api.get('./decress')
@@ -26,7 +26,12 @@ function Decress({navigation}){
         <Header navigation={navigation} title="Decretos"/>
         <View style={Style.container}>
             <View style={Style.box_empty}>
-                <Text style={Style.empty}>{empty}</Text>
+                {
+                    empty === '' ?
+                    <ActivityIndicator size="large"/>
+                    :
+                    <Text style={Style.empty}>{empty}</Text>
+                }
             </View>
         </View>
         </>

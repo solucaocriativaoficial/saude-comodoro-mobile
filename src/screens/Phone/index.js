@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, FlatList, TouchableOpacity, Linking, Image} from 'react-native'
+import {View, Text, FlatList, TouchableOpacity, Linking, Image, ActivityIndicator} from 'react-native'
 import Style from './style'
 import api from '../../api'
 import iconWhatsapp from '../../assets/icon-whatsapp1x.png'
@@ -8,7 +8,7 @@ import Header from '../../components/header'
 
 function Phone({navigation}){
     const [phones, setPhones] = useState([])
-    const [empty, setEmpty] = useState('Carregando')
+    const [empty, setEmpty] = useState('')
     useEffect(() => {
         async function getContent(){
             const responsePhones = await api.get('./phone')
@@ -27,7 +27,12 @@ function Phone({navigation}){
         <Header navigation={navigation} title="Contatos de Telefones"/>
         <View style={Style.container}>
             <View style={Style.box_empty}>
-                <Text style={Style.empty}>{empty}</Text>
+                {
+                    empty === '' ?
+                    <ActivityIndicator size="large"/>
+                    :
+                    <Text style={Style.empty}>{empty}</Text>
+                }
             </View>
         </View>
         </>
