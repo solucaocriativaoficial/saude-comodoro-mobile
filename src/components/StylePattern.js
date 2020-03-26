@@ -1,6 +1,6 @@
 const StylePattern = {
     colors: {
-        primary: "rgba(25, 206, 163, 1)",
+        primary: "rgba(34, 177, 143, 1)",
         secundary: "#555555",
         white: "#ffffff",
         black_light: "#9C9C9C",
