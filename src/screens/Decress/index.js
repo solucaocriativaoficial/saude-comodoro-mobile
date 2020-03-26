@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 function Decress({navigation}){
     const [decress, setDecress] = useState([])
-    const [empty, setEmpty] = useState('')
+    const [empty, setEmpty] = useState('Carregando')
     useEffect(() => {
         async function getContent(){
             const responseDecress = await api.get('./decress')
@@ -20,7 +20,7 @@ function Decress({navigation}){
         }
         getContent()
     }, [])
-    if(empty !== '')
+    if(!decress.length)
     return(
         <>
         <Header navigation={navigation} title="Decretos"/>
@@ -32,7 +32,6 @@ function Decress({navigation}){
         </>
     )
 
-    else
     return(
         <>
         <Header navigation={navigation} title="Decretos"/>

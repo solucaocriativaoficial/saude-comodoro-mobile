@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 function Dicas({navigation}){
     const [dicas, setDicas] = useState([])
-    const [empty, setEmpty] = useState('')
+    const [empty, setEmpty] = useState('Carregando')
     useEffect(() => {
         async function getContent(){
             const responseDicas = await api.get('./dicas')
@@ -20,7 +20,7 @@ function Dicas({navigation}){
         }
         getContent()
     }, [])
-    if(empty !== '')
+    if(!dicas.length)
     return(
         <>
         <Header navigation={navigation} title="Dicas de Saúde"/>
@@ -32,7 +32,6 @@ function Dicas({navigation}){
         </>
     )
 
-    else
     return(
         <>
         <Header navigation={navigation} title="Dicas de Saúde"/>
