@@ -1,6 +1,6 @@
 import React from 'react'
 import StylePattern from '../components/StylePattern'
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import {View, Image, TouchableOpacity, Linking} from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem} from '@react-navigation/drawer'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -11,7 +11,7 @@ import Dicas from '../screens/Dicas'
 import DicasDetail from '../screens/DicasDetail'
 import Phone from '../screens/Phone'
 import Postos from '../screens/Postos'
-import Developer from '../screens/Developer'
+import Symptoms from '../screens/Symptoms'
 
 //assets
 import logo_developer from '../assets/icon-developer.png'
@@ -53,12 +53,20 @@ function customMenu(props){
                 <View style={{
                     flexDirection: 'row',
                     alignItems: "center",
-                    justifyContent: 'flex-end'
+                    justifyContent: 'flex-end',
+                    height: 50,
                 }}>
-                    <TouchableOpacity onPress={() => {
-                        
+                    <TouchableOpacity style={{
+                        width: 50,
+                        height: '100%',
+                        backgroundColor: 'rgb(28,0,58)',
+                        borderRadius: 25,
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }} onPress={() => {
+                        Linking.openURL('https:www.facebook.com/solucaocriativaoficial')
                     }}>
-                        <Image source={logo_developer} style={{width: 40,height: 40, marginRight: 10}}/>
+                        <Image source={logo_developer} style={{width: 35,height: 35}}/>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -92,6 +100,9 @@ function Menu(){
             <Drawer.Screen name="Cases" component={Cases} options={{
                 title: "Casos de Covid-19"
             }}/>
+            <Drawer.Screen name="Symptoms" component={Symptoms} options={{
+                title: "Sintomas"
+            }}/>
         </Drawer.Navigator>
     )
 }
@@ -106,7 +117,7 @@ function RouterScreens(){
                 <Stack.Screen name="Dicas" component={Dicas}/>
                 <Stack.Screen name="DicasDetail" component={DicasDetail}/>
                 <Stack.Screen name="Postos" component={Postos}/>
-                <Stack.Screen name="Developer" component={Developer}/>
+                <Stack.Screen name="Symptoms" component={Symptoms}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
