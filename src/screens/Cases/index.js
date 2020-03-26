@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 function Cases({navigation}){
     const [cases, setCases] = useState([])
-    const [empty, setEmpty] = useState('')
+    const [empty, setEmpty] = useState('Carregando')
     useEffect(() => {
         async function getContent(){
             const responseCases = await api.get('./cases')
@@ -20,7 +20,7 @@ function Cases({navigation}){
         }
         getContent()
     }, [])
-    if(empty !== '')
+    if(!cases.length)
     return(
         <>
         <Header navigation={navigation} title="Casos de COVID-19"/>
@@ -32,7 +32,6 @@ function Cases({navigation}){
         </>
     )
 
-    else
     return(
         <>
         <Header navigation={navigation} title="Casos de COVID-19"/>
