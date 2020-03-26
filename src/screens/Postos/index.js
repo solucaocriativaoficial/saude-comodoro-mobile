@@ -7,7 +7,7 @@ import Header from '../../components/header'
 
 function Postos({navigation}){
     const [postos, setPostos] = useState([])
-    const [empty, setEmpty] = useState('')
+    const [empty, setEmpty] = useState('Carregando')
     useEffect(() => {
         async function getContent(){
             const responsePostos = await api.get('./postos')
@@ -20,7 +20,7 @@ function Postos({navigation}){
         }
         getContent()
     }, [])
-    if(empty !== '')
+    if(!postos.length)
     return(
         <>
         <Header navigation={navigation} title="Postos de Saúde"/>
@@ -32,7 +32,6 @@ function Postos({navigation}){
         </>
     )
 
-    else
     return(
         <>
         <Header navigation={navigation} title="Postos de Saúde"/>
