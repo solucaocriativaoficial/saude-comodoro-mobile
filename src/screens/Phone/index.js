@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {View, Text, FlatList, TouchableOpacity, Linking} from 'react-native'
 import Style from './style'
 import api from '../../api'
 
@@ -23,7 +23,7 @@ function Phone({navigation}){
     if(empty !== '')
     return(
         <>
-        <Header navigation={navigation} title="Dicas de Saúde"/>
+        <Header navigation={navigation} title="Contatos de Telefones"/>
         <View style={Style.container}>
             <View style={Style.box_empty}>
                 <Text style={Style.empty}>{empty}</Text>
@@ -41,8 +41,14 @@ function Phone({navigation}){
                 renderItem={
                     ({item}) => <View style={Style.post}>
                         <Text style={Style.post_title}>{item.name}</Text>
-                        <Text style={Style.post_content}>{item.number_phone}</Text>
-                    </View>}
+                        <TouchableOpacity onPress={() => {
+                            Linking.openURL(`tel:${item.number_phone}`)
+                        }}>
+                            <Text style={Style.post_content}>{item.number_phone}</Text>
+                        </TouchableOpacity>
+                    </View>
+                    }
+                    keyExtractor={item => item._id}
             />
         </View>
         </>
