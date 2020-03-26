@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Saúde Comodoro",
+    "description": "Aplicativo para que a população possa ter acesso a informações sobre a Pandemia que o Covid-19, mais conhecido como Coronavírus, tem causado! Nesse app encontramos dicas, telefones de contato, decretos que os municípios publicam e números de casos confirmados, suspeitos e de mortes causados por este vírus.",
     "slug": "saude_comodoro",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -10,9 +11,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,6 +25,10 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+     "android": {
+      "package": "com.solucaocriativa.saude_comodoro",
+      "versionCode": 1
     }
   }
 }
