@@ -28,7 +28,12 @@
     },
      "android": {
       "package": "com.solucaocriativa.saude_comodoro",
-      "versionCode": 1
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyA9-uENhEpi0y2yCFNCS4riWxG3LYwAOiY"
+        }
+      }
     }
   }
 }
