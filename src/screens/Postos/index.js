@@ -30,7 +30,10 @@ function Postos({navigation}){
     const [myPosition, setMyposition] = useState(null)
     const [filter, setFilter] = useState('')
     const [valueInput, setValueInput] = useState(null)
-    const [showDetailMarker, setShowDetailMarker] = useState(false)
+
+    function handleRegion(region){
+        setCurrentRegion(region)
+    }
 
     useEffect(() => {
         async function getContent(){
@@ -48,7 +51,19 @@ function Postos({navigation}){
 
                 const {status, data} = responsePostos
                 if(status === 200 && data.success === true)
-                setPostos(data.content)
+                {
+                    setPostos(data.content)
+
+                    if(filter !== '')
+                    {
+                        setCurrentRegion({
+                            latitude: data.content[0].coords.latitude,
+                            longitude: data.content[0].coords.longitude,
+                            latitudeDelta: 0.01,
+                            longitudeDelta: 0.01
+                        });
+                    }
+                }
 
                 if(!data.success)
                 setEmpty(data.message)
@@ -56,13 +71,6 @@ function Postos({navigation}){
         }
         getContent()
     }, [filter])
-
-    function handleRegion(region){
-        setCurrentRegion(region)
-    }
-    function showBoxDetailPosto(){
-        setShowDetailMarker(true)
-    }
 
     return(
         <>
@@ -84,6 +92,7 @@ function Postos({navigation}){
                     <MapView
                         onRegionChangeComplete={handleRegion}
                         initialRegion={currentRegion}
+                        region={currentRegion}
                         style={Style.map}
                     >
                         <Marker
